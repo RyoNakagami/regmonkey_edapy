@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "regmonkey_edapy"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["RyoNak <nakagamiryo0901@gmail.com>"]
 license = "MIT"
