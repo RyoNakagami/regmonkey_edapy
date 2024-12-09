@@ -33,8 +33,8 @@ jobs:
         run: |
           LATEST_VERSION=$(poetry run python3 -c "from importlib.metadata import version; print(version('regmonkey_edapy'))")
           if [ -n "$LATEST_VERSION" ]; then
-            GITTAG="v"$LATEST_VERSION
+            GITTAG="v"$LATEST_VERSION"
             gh release create $GITTAG --generate-notes
           fi
-        env:
-          GH_TOKEN: ${{ secrets.regmonkey_edapy_development}}
+        with:
+          token: ${{ secrets.regmonkey_edapy_development}}
