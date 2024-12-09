@@ -18,6 +18,8 @@ jobs:
           fetch-depth: 0
       - name: Install Python
         uses: actions/setup-python@v5
+        with: 
+          python-version: 3.12
       - name: Install poetry
         uses: abatilo/actions-poetry@v2
       - uses: actions/cache@v3
@@ -29,10 +31,10 @@ jobs:
         run: poetry install
       - name: Fetch version info from pyproject.toml
         run: |
-          LATEST_VERSION=$(python3 -c "from importlib.metadata import version; print(version('regmonkey_edapy'))")
+          LATEST_VERSION=$(poetry run python3 -c "from importlib.metadata import version; print(version('regmonkey_edapy'))")
           if [ -n "$LATEST_VERSION" ]; then
             GITTAG="v"$LATEST_VERSION"
             gh release create $GITTAG --generate-notes
           fi
-        env:
-          GH_TOKEN: ${{ github.token }}
+        with:
+          token: ${{ secrets.regmonkey_edapy_development}}
