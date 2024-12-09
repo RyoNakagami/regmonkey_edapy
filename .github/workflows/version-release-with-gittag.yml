@@ -36,5 +36,5 @@ jobs:
             GITTAG="v"$LATEST_VERSION"
             gh release create $GITTAG --generate-notes
           fi
-        with:
+        env:
           token: ${{ secrets.regmonkey_edapy_development}}
