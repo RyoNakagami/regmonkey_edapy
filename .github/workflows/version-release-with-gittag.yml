@@ -37,4 +37,4 @@ jobs:
             gh release create $GITTAG --generate-notes
           fi
         env:
-          token: ${{ secrets.regmonkey_edapy_development}}
+          GH_TOKEN: ${{ secrets.regmonkey_edapy_development}}
